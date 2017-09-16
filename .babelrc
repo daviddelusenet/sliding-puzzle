@@ -1,0 +1,35 @@
+{
+  "presets": [
+    ["es2015", {"modules": false}], // webpack understands the native import syntax and uses it for tree shaking
+    "react" // transpile React components to JavaScript
+  ],
+  "env": {
+    "dev": {
+      "plugins": [
+        "react-hot-loader/babel", // enables React code to work with HMR
+        ["react-css-modules", {
+          "context": "./src",
+          "generateScopedName": "[local]___[hash:base64:5]",
+          "filetypes": {
+            ".scss": {
+              "syntax": "postcss-scss"
+            }
+          }
+        }]
+      ]
+    },
+    "prod": {
+      "plugins": [
+        ["react-css-modules", {
+          "context": "./src",
+          "generateScopedName": "[local]___[hash:base64]",
+          "filetypes": {
+            ".scss": {
+              "syntax": "postcss-scss"
+            }
+          }
+        }]
+      ]
+    }
+  }
+}
