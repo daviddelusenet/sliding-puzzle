@@ -1,0 +1,149 @@
+.Tile {
+  position: absolute;
+  width: percentage(1 / 4);
+  cursor: pointer;
+  background-image: url('/img/monks.jpg');
+  background-size: 400%;
+
+  &::after {
+    display: block;
+    padding-bottom: 100%;
+    content: '';
+  }
+}
+
+.Tile--1 {
+  background-position: 0 0;
+}
+
+.Tile--2 {
+  background-position: -100% 0;
+}
+
+.Tile--3 {
+  background-position: -200% 0;
+}
+
+.Tile--4 {
+  background-position: -300% 0;
+}
+
+.Tile--5 {
+  background-position: 0 -100%;
+}
+
+.Tile--6 {
+  background-position: -100% -100%;
+}
+
+.Tile--7 {
+  background-position: -200% -100%;
+}
+
+.Tile--8 {
+  background-position: -300% -100%;
+}
+
+.Tile--9 {
+  background-position: 0 -200%;
+}
+
+.Tile--10 {
+  background-position: -100% -200%;
+}
+
+.Tile--11 {
+  background-position: -200% -200%;
+}
+
+.Tile--12 {
+  background-position: -300% -200%;
+}
+
+.Tile--13 {
+  background-position: 0 -300%;
+}
+
+.Tile--14 {
+  background-position: -100% -300%;
+}
+
+.Tile--15 {
+  background-position: -200% -300%;
+}
+
+.Tile--position-1 {
+  top: 0;
+  left: 0;
+}
+
+.Tile--position-2 {
+  top: 0;
+  left: 25%;
+}
+
+.Tile--position-3 {
+  top: 0;
+  left: 50%;
+}
+
+.Tile--position-4 {
+  top: 0;
+  left: 75%;
+}
+
+.Tile--position-5 {
+  top: 25%;
+  left: 0;
+}
+
+.Tile--position-6 {
+  top: 25%;
+  left: 25%;
+}
+
+.Tile--position-7 {
+  top: 25%;
+  left: 50%;
+}
+
+.Tile--position-8 {
+  top: 25%;
+  left: 75%;
+}
+
+.Tile--position-9 {
+  top: 50%;
+  left: 0;
+}
+
+.Tile--position-10 {
+  top: 50%;
+  left: 25%;
+}
+
+.Tile--position-11 {
+  top: 50%;
+  left: 50%;
+}
+
+.Tile--position-12 {
+  top: 50%;
+  left: 75%;
+}
+
+.Tile--position-13 {
+  top: 75%;
+  left: 0;
+}
+
+.Tile--position-14 {
+  top: 75%;
+  left: 25%;
+}
+
+.Tile--position-15 {
+  top: 75%;
+  left: 50%;
+}
+
