@@ -59,7 +59,7 @@ module.exports = function(env) {
               loader: 'sass-loader',
               options: {
                 sourceMap: true,
-                includePaths: ['node_modules/foundation-sites/scss', 'src/styles']
+                includePaths: ['node_modules/foundation-sites/scss', 'node_modules/reset-css', 'src/styles']
               }
             }
           ]
