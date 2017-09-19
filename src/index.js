@@ -9,7 +9,7 @@ import './styles/global/global.scss';
 // Import application
 import App from './app/App';
 
-const render = (App) => {
+const Render = (App) => {
   ReactDOM.render(
     <AppContainer>
       <App />
@@ -18,11 +18,11 @@ const render = (App) => {
   );
 };
 
-render(App);
+Render(App);
 
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./app/App', () => {
-    render(App)
+    Render(App)
   });
 }

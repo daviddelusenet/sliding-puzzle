@@ -1,6 +1,10 @@
+// scss-lint:disable ImportPath
+@import 'reset.scss';
+
 body {
+  font-family: $ff-gill-sans;
   line-height: 1.5;
-  background-color: $c-white;
+  background-color: $c-black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

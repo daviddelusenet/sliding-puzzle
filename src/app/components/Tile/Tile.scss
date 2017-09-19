@@ -1,7 +1,10 @@
+@import 'shared/shared';
+
 .Tile {
   position: absolute;
   width: percentage(1 / 4);
   cursor: pointer;
+  border: 1px solid $c-white;
   background-image: url('/img/monks.jpg');
   background-size: 400%;
 
@@ -145,5 +148,10 @@
 .Tile--position-15 {
   top: 75%;
   left: 50%;
+}
+
+.Tile--position-16 {
+  top: 75%;
+  left: 75%;
 }
 

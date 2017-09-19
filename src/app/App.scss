@@ -1,0 +1,33 @@
+@import 'shared/shared';
+
+.SlidingPuzzle {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+  .SlidingPuzzle__canvas {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid $c-white;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: '';
+      opacity: .3;
+      background-image: url('/img/monks.jpg');
+      background-position: center center;
+      background-size: 100%;
+    }
+
+    &::after {
+      display: block;
+      padding-bottom: 100%;
+      content: '';
+    }
+  }

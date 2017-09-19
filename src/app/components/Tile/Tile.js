@@ -11,6 +11,9 @@ class Tile extends React.Component {
 
   constructor(props) {
     super(props);
+
+    // Bind functions
+    this.moveTile = this.moveTile.bind(this);
   }
 
   componentDidMount() {
@@ -22,16 +25,24 @@ class Tile extends React.Component {
   componentWillUnmount() {
   }
 
+  moveTile() {
+    if (this.props.openPosition == this.props.position - 1
+      || this.props.openPosition == this.props.position + 1
+      || this.props.openPosition == this.props.position - 4
+      || this.props.openPosition == this.props.position + 4) {
+      this.props.updateTilePosition(this.props.id);
+    }
+  }
+
   render() {
     const TileClasses = ClassNames({
       [Styles['Tile']]: true,
       [Styles[`Tile--${this.props.id}`]]: this.props.id,
-      [Styles[`Tile--position-${this.props.id}`]]: this.props.id
+      [Styles[`Tile--position-${this.props.position}`]]: this.props.position
     });
 
-
     return(
-      <div className={TileClasses} ref={div => this.el = div}></div>
+      <div className={TileClasses} ref={div => this.el = div} onClick={this.moveTile}></div>
     );
   }
 
