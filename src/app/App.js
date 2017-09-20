@@ -67,15 +67,19 @@ class App extends React.Component {
       }],
       openPosition: 16,
       solved: true,
-      amountOfTiles: 16
+      amountOfTiles: 16,
+      shuffled: false
     };
   }
 
   componentDidUpdate() {
-    if (this.checkIfSolved() && !this.state.solved) {
+    if (this.checkIfSolved() && !this.state.solved && this.state.shuffled) {
       this.setState(update(this.state, {
         solved: {
           $set: true
+        },
+        shuffled: {
+          $set: false
         }
       }));
 
@@ -113,7 +117,8 @@ class App extends React.Component {
       return {
         tiles: Tiles,
         openPosition: openPosition,
-        solved: false
+        solved: false,
+        shuffled: true
       }
     });
   }
