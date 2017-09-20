@@ -1,9 +1,8 @@
 import React    from 'react';
-import update from 'immutability-helper';
+import update   from 'immutability-helper';
 import './App.scss';
 
 // Import components
-import Canvas   from 'Canvas/Canvas';
 import Tile     from 'Tile/Tile';
 import Title    from 'Title/Title';
 
@@ -16,6 +15,7 @@ class App extends React.Component {
     this.shuffleTilePositions = this.shuffleTilePositions.bind(this);
     this.checkIfSolved = this.checkIfSolved.bind(this);
     this.updateTilePosition = this.updateTilePosition.bind(this);
+    this.changeAmountOfTiles = this.changeAmountOfTiles.bind(this);
 
     // Set initial state
     this.state = {
@@ -66,15 +66,32 @@ class App extends React.Component {
         "position": 15
       }],
       openPosition: 16,
-      solved: true
+      solved: true,
+      amountOfTiles: 16
     };
   }
 
+  componentDidUpdate() {
+    if (this.checkIfSolved() && !this.state.solved) {
+      this.setState(update(this.state, {
+        solved: {
+          $set: true
+        }
+      }));
+
+      console.info('You did it!');
+    }
+  }
+
   shuffleTilePositions() {
-    const Positions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    const Positions = [];
     const Tiles = [];
     let id = 1;
     let openPosition = 0;
+
+    for (let i = 1; i <= this.state.amountOfTiles; i++) {
+      Positions.push(i);
+    }
 
     while (Positions.length) {
       let index = Math.floor(Math.random() * Positions.length);
@@ -107,7 +124,7 @@ class App extends React.Component {
     let newOpenPosition = 0;
 
     for (let tile of this.state.tiles) {
-      if (tile.id == id) {
+      if (tile.id === id) {
         newOpenPosition = tile.position;
         break;
       }
@@ -120,19 +137,40 @@ class App extends React.Component {
       },
       openPosition: {
         $set: newOpenPosition
+      },
+      solved: {
+        $set: false
       }
     }));
+  }
+
+  changeAmountOfTiles() {
+    const NewState = {
+      tiles: [],
+      openPosition: parseInt(this.amountOfTiles.value),
+      solved: true,
+      amountOfTiles: parseInt(this.amountOfTiles.value)
+    };
+
+    for (let i = 1; i < this.amountOfTiles.value; i++) {
+      NewState.tiles.push({
+        "id": i,
+        "position": i
+      })
+    }
+
+    this.setState(() => {
+      return NewState;
+    });
   }
 
   checkIfSolved() {
     for (let tile of this.state.tiles) {
       if (tile.id != tile.position) {
-        console.log('not solved');
         return false;
       }
     }
 
-    console.log('solved');
     return true;
   }
 
@@ -148,7 +186,11 @@ class App extends React.Component {
           {Tiles}
         </div>
         <button onClick={this.shuffleTilePositions}>Shuffle</button>
-        <button onClick={this.checkIfSolved}>Solved?</button>
+        <select defaultValue="16" onChange={this.changeAmountOfTiles} ref={select => this.amountOfTiles = select}>
+          <option value="9">9</option>
+          <option value="16">16</option>
+          <option value="25">25</option>
+        </select>
       </div>
     );
   }
